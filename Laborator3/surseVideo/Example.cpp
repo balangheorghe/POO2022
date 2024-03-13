@@ -19,15 +19,19 @@ Example::Example(int maxNumber) {
 	//ex: int * => (number_of_elements * sizeof(int))
 	//ex: char * => (number_of_elements * sizeof(char))
 	//ex: char ** => (number_of_elements * sizeof(char*))
-	this->vector = (int*) malloc(this->MaxNumberOfElements * sizeof(int));
-	this->name = (char*) malloc(256 * sizeof(char));
+	//this->vector = (int*)malloc(this->MaxNumberOfElements * sizeof(int));
+	this->vector = new int[this->MaxNumberOfElements];
+	//this->name = (char*)malloc(256 * sizeof(char));
+	this->name = new char[256];
 }
 
 Example::~Example() {
-	if (this->vector != nullptr)
-		free(this->vector);
-	if (this->name != nullptr)
-		free(this->name);
+	//if (this->vector != nullptr)
+	//	free(this->vector);
+	//if (this->name != nullptr)
+	//	free(this->name);
+	delete this->vector;
+	delete this->name;
 }
 
 void Example::AddNumber(int number) {
@@ -36,7 +40,7 @@ void Example::AddNumber(int number) {
 }
 
 void Example::AddMultipleNumbers(int number1, int number2) {
-	if (this-> NumberOfElements + 2 < this->MaxNumberOfElements && this->vector != nullptr) {
+	if (this->NumberOfElements + 2 < this->MaxNumberOfElements && this->vector != nullptr) {
 		this->vector[this->NumberOfElements++] = number1;
 		this->vector[this->NumberOfElements++] = number2;
 	}
@@ -94,7 +98,7 @@ char* Example::SetToName(const char* sir1, const char* sir2, const char* sir3) {
 	}
 	else {
 		//realloc http://www.cplusplus.com/reference/cstdlib/realloc/
-		this->name = (char*) realloc(this->name, sizeToRealloc);
+		this->name = (char*)realloc(this->name, sizeToRealloc);
 		//memset http://www.cplusplus.com/reference/cstring/memset/
 		memset(this->name, 0, sizeToRealloc);
 		if (this->name != nullptr) {
