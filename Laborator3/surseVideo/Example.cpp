@@ -84,6 +84,7 @@ char* Example::SetToName(const char* sir1, const char* sir2, const char* sir3) {
 	int sizeToRealloc;
 	sizeToRealloc = strlen(sir1) + strlen(sir2) + strlen(sir3) + 1;
 	//realocare
+	//DOAR DE EXEMPLU; IN PRACTIC NU COMBINATI MALLOC / DELETE sau NEW / free
 	if (this->name == nullptr)
 	{
 		this->name = (char*)malloc(sizeToRealloc);
