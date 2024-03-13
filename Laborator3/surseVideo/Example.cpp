@@ -73,6 +73,7 @@ void Example::AddVariadicNumbers(int count, ...) {
 		for (int i = 0; i < count; i++) {
 			this->vector[this->NumberOfElements++] = va_arg(vl, int);
 		}
+		va_end(vl);
 	}
 
 }
